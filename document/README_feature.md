@@ -1,32 +1,47 @@
-# Todo
+# タスクブランチ
+
+### categorybox subcategories accordion
+
+サブカテゴリのところをアコーディオンで表示させる。
+
 ### subcategoryCreate 
-branch-name: feature/subcategory-create
+***branch-name: feature/subcategory-create***
 <hr/>
 
-### subcategory page
-**branch-name: feature/subcategory-page**
+HOMEのカテゴリの下にプラスボタンを置いてそれをクリックするとinputボックスが出現して入力できる仕組みにする。
 
-紐づいた問題を表示する。
+
+### subcategory page
+***branch-name: feature/subcategory-page***
+
+紐づいた問題を表示する。<br>
 問題は全件取得する。
 
 <hr/>
 
-### カテゴリ検索
-branch-name: feature/search-category
+### category search
+***branch-name: feature/search-category***
+
+部分一致検索
+
+一旦表示されているページネーションのカテゴリをすべてcategoryListから削除して、
+部分検索に一致するカテゴリのみを表示する。
+
+検索ボックスを空にすると再びページネーションに基づくcategoryが表示される。
+
 <hr/>
 
 ### subcategory search
-branch-name: feature/search-subcategory
+***branch-name: feature/search-subcategory***
 
 ### 問題出題画面
-branch-name: feature/ask-question
+***branch-name: feature/ask-question***
 
-問題作成初期画面において
-<br>
-[1]ランダムで出題するか、
-<br>
+問題作成初期画面において<br>
+[1]ランダムで出題するか、<br>
 [2]カテゴリ、サブカテゴリに絞って出題するか選択できるようにする。
-<br>
+
+
 出題される問題の数をinputタグnumberで選べるようにする。
 <br>
 「問題を出題する」ボタンをクリックすると同時にサーバにフラグ付きのリクエストを送信して、問題をデータのレスポンスをもらう。
