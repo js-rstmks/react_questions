@@ -14,7 +14,6 @@ const CategoryBox = ({ category }) => {
         };
 
         fetchSubcategories();
-    // }, [category.id]); 
     }, []); 
 
     return (
@@ -22,7 +21,8 @@ const CategoryBox = ({ category }) => {
             <div className="category-name">{category.id}：{category.name}</div>
                 {subcategoriesList.map((subcategory) => {
                     return (
-                        <div className="subcategory-name">{subcategory.name}</div>
+                        <div className="subcategory-name">●{subcategory.name}</div>
+                        
                     )
 
                 })}

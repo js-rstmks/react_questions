@@ -2,8 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home'
-import Login from './components/Login'
-import Logout from './components/Logout'
+import Login from './components/login/Login'
+import Logout from './components/login/Logout'
 // import CreatePost from './components/CreatePost'
 import Navbar from './components/Navbar'
 import QuestionPage from './components/QuestionPage'
