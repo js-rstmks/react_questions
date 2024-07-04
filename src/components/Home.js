@@ -24,7 +24,6 @@ const Home = () => {
     }, [])
 
     const handleDelete = async (id) => {
-        console.log(88)
         await deleteDoc(doc(db, "posts", id))
         window.location.href = "/"
     }
@@ -34,7 +33,7 @@ const Home = () => {
             {/* {postList.map((post) => { */}
             {categoryList.map((category) => {
                 return (
-                    <CategoryBox category={category}></CategoryBox>
+                    <CategoryBox category={category} key={category.id}></CategoryBox>
                 )
             })}
         </div>
