@@ -1,17 +1,21 @@
 # タスクブランチ
 
-### categorybox subcategories accordion
+## categorybox subcategories accordion
+priority: low<br>
+***branch-name: feature/subcategory-accordion***
 
 サブカテゴリのところをアコーディオンで表示させる。
 
-### subcategoryCreate 
+→とりあえず優先度低いのでパス。
+
+## subcategoryCreate 
 ***branch-name: feature/subcategory-create***
 <hr/>
 
 HOMEのカテゴリの下にプラスボタンを置いてそれをクリックするとinputボックスが出現して入力できる仕組みにする。
 
 
-### subcategory page
+## subcategory page
 ***branch-name: feature/subcategory-page***
 
 紐づいた問題を表示する。<br>
@@ -19,7 +23,7 @@ HOMEのカテゴリの下にプラスボタンを置いてそれをクリック�
 
 <hr/>
 
-### category search
+## category search
 ***branch-name: feature/search-category***
 
 部分一致検索
@@ -31,10 +35,10 @@ HOMEのカテゴリの下にプラスボタンを置いてそれをクリック�
 
 <hr/>
 
-### subcategory search
+## subcategory search
 ***branch-name: feature/search-subcategory***
 
-### 問題出題画面
+## 問題出題画面
 ***branch-name: feature/ask-question***
 
 問題作成初期画面において<br>
@@ -51,7 +55,15 @@ HOMEのカテゴリの下にプラスボタンを置いてそれをクリック�
 50問解ききる前にやめてしまう可能性があるため、まとめて正解不正解のフラグを送信しない。
 
 #### カテゴリで絞って問題を出題する
+***branch-name: feature/ask-question-by-category***  ← feature/ask-questionブランチから派生
+
+問題作成はバックエンドが行うのでapi叩くだけ。
+
+
 #### ランダムに問題を出題する
+***branch-name: feature/ask-question-random***  ← feature/ask-questionブランチから派生
+
+問題作成はバックエンドが行うのでapi叩くだけ。
 
 
 
