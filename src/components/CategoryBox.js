@@ -1,8 +1,31 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 const CategoryBox = ({ category }) => {
     const [subcategoriesList, setSubcategoriesList] = useState([]);
+    const [showForm, setShowForm] = useState(false);
+    const [subCategoryName, setCategoryName] = useState('');
+
+    const handleClick = () => {
+        setShowForm(!showForm);
+    }
+
+    const createSubCategory = async () => {
+        const response = await fetch(`http://localhost:8000/subcategories/${category.id}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: subCategoryName }),
+          });
+    
+          if (!response.ok) {
+            throw new Error('Failed to create subcategory');
+          }
+    
+        const data = await response.json();
+        setSubcategoriesList((prev) => [...prev, data]);
+        setCategoryName('');
+    }
 
     useEffect(() => {
         const fetchSubcategories = async () => {
@@ -14,26 +37,26 @@ const CategoryBox = ({ category }) => {
         };
 
         fetchSubcategories();
-    }, []); 
+    }, [category.id]); 
 
     return (
         <div className="postContents" key={category.id}>
             <div className="category-name">{category.id}：{category.name}</div>
-                {subcategoriesList.map((subcategory) => {
-                    return (
-                        <div className="subcategory-name">●{subcategory.name}</div>
-                        
-                    )
-
-                })}
-            {/* <div className="nameAndDeleteButton">
-                <h3>@{post.author.username}</h3>
-                {post.author.id === auth.currentUser?.uid && (
-                    <button onClick={() => handleDelete(post.id)}>削除</button>
-                )}
-            </div> */}
+            <div onClick={handleClick}>➕</div>
+            {showForm && (
+                <>
+                    <label>
+                        サブカテゴリー名:
+                        <input type="text" value={subCategoryName} onChange={(e) => setCategoryName(e.target.value)} />
+                    </label>
+                    <button onClick={createSubCategory}>Submit</button>
+                </>
+            )}
+            {subcategoriesList.map((subcategory) => (
+                <div className="subcategory-name" key={subcategory.id}>●{subcategory.name}</div>
+            ))}
         </div>
-    )
+    );
 }
 
-export default CategoryBox
+export default CategoryBox;

@@ -11,7 +11,6 @@ const CreateCategory = ({isAuth}) => {
 
     const navigate = useNavigate("")
     const createCategory = async() => {
- 
 
         const response = await fetch('http://localhost:8000/categories', {
             method: 'POST',
