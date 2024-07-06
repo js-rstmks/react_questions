@@ -21,7 +21,8 @@ const Navbar = ({ isAuth }) => {
                         <FontAwesomeIcon icon={faArrowRightToBracket} />
                         ログアウト
                     </Link>
-                    <Link to="/createcategory">記事投稿</Link>
+                    <Link to="/createcategory">カテゴリ作成</Link>
+                    <Link to="/set-problem">問題を出題する</Link>
                 </>
             )}
         </nav>
