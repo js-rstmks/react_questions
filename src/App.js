@@ -10,6 +10,7 @@ import QuestionPage from './components/QuestionPage'
 
 import { useState } from 'react';
 import CreateCategory from './components/CreateCategory';
+import SubcategoryPage from './components/SubcategoryPage';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/createcategory" element={<CreateCategory isAuth={isAuth}/>}></Route>
         <Route path="/login" element={<Login setIsAuth={setIsAuth}/>}></Route>
         <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}></Route>
+        <Route path="/subcategory/:subcategory_id" element={<SubcategoryPage setIsAuth={setIsAuth} />} />
         <Route path='/question' element={<QuestionPage />}></Route>
       </Routes>
     </Router>

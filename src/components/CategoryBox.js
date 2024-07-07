@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom"
+
 
 const CategoryBox = ({ category }) => {
     const [subcategoriesList, setSubcategoriesList] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [subCategoryName, setCategoryName] = useState('');
+
+    const navigate = useNavigate("")
 
     const handleClick = () => {
         setShowForm(!showForm);
@@ -25,7 +29,12 @@ const CategoryBox = ({ category }) => {
         const data = await response.json();
         setSubcategoriesList((prev) => [...prev, data]);
         setCategoryName('');
+        
     }
+
+    const handleSubcategoryClick = (subcategory_id) => {
+        navigate(`/subcategory/${subcategory_id}`);
+      };
 
     useEffect(() => {
         const fetchSubcategories = async () => {
@@ -53,7 +62,7 @@ const CategoryBox = ({ category }) => {
                 </>
             )}
             {subcategoriesList.map((subcategory) => (
-                <div className="subcategory-name" key={subcategory.id}>●{subcategory.name}</div>
+                <div className="subcategory-name" key={subcategory.id} onClick={() => handleSubcategoryClick(subcategory.id)}>●{subcategory.name}</div>
             ))}
         </div>
     );

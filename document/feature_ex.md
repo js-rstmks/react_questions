@@ -70,4 +70,6 @@ HOMEのカテゴリの下にプラスボタンを置いてそれをクリック�
 SubcategoryPageからQuestionの正解できたかのフラグを自分でクリックできるようにする。
 
 
+本当に作成しますか？の確認　モーダルを表示
 
+question 作成ページ　　markdown
