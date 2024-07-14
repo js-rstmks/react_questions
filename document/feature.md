@@ -1,13 +1,14 @@
-## subcategory page
-***branch-name: feat/subcategory-page***
+## create question page
+***branch-name: feat/create-question***
 
-紐づいた問題を表示する。<br>
-問題は全件取得する。
+問題作成画面。アンサーの部分はマークダウンで実装する必要はない。行で段落をブレイクできるようにできればいいね
+作成ボタンをおしたら元のsubcategorypageに遷移する
 
-<hr/>
+answerの数は特に決まってないので、　プラスボタンをクリックして　アンサーの数を増やす。
+
 
 ## category search
-***branch-name: feature/search-category***
+***branch-name: feat/search-category***
 
 部分一致検索
 
@@ -19,10 +20,10 @@
 <hr/>
 
 ## subcategory search
-***branch-name: feature/search-subcategory***
+***branch-name: feat/search-subcategory***
 
 ## 問題出題画面
-***branch-name: feature/ask-question***
+***branch-name: feat/ask-question***
 
 問題作成初期画面において<br>
 [1]ランダムで出題するか、<br>
@@ -38,18 +39,21 @@
 50問解ききる前にやめてしまう可能性があるため、まとめて正解不正解のフラグを送信しない。
 
 #### カテゴリで絞って問題を出題する
-***branch-name: feature/ask-question-by-category***  ← feature/ask-questionブランチから派生
+***branch-name: feat/ask-question-by-category***  ← feature/ask-questionブランチから派生
 
 問題作成はバックエンドが行うのでapi叩くだけ。
 
 
 #### ランダムに問題を出題する
-***branch-name: feature/ask-question-random***  ← feature/ask-questionブランチから派生
+***branch-name: feat/ask-question-random***  ← feature/ask-questionブランチから派生
 
 問題作成はバックエンドが行うのでapi叩くだけ。
 
 #### Question正解フラグの手動切り替え。
+***branch-name: feat/ask-question-by-category***  ← feature/ask-questionブランチから派生
 
+subcategorypageにて問題のis_correct を表示させる。
+チェックボックスで表現する。
 SubcategoryPageからQuestionの正解できたかのフラグを自分でクリックできるようにする。
 
 
