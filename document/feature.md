@@ -1,5 +1,5 @@
 ## subcategory page
-***branch-name: feature/subcategory-page***
+***branch-name: feat/subcategory-page***
 
 紐づいた問題を表示する。<br>
 問題は全件取得する。

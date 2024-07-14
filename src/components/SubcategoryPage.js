@@ -14,18 +14,18 @@ function SubcategoryPage({ setIsAuth }) {
                 }
             })
             .then(data => {
-                console.log(data)
                 setSubCategoryName(data.name)
             })
         }
         const getQuestions = () => {
-            fetch('http://localhost:8000/categories')
+            fetch(`http://localhost:8000/questions/subcategory_id/${subcategory_id}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 }
             })
             .then(data => {
+                console.log(data)
                 setQuestionList(data)
             })
         }
@@ -38,6 +38,14 @@ function SubcategoryPage({ setIsAuth }) {
     <div>
       <h1>{subCategoryName}</h1>
       <button>Questionを作成する</button>
+      {questionList.map((question) => {
+                return (
+                    <div key={question.id}>
+                        <h2>{question.problem}</h2>
+                        <p>{question.answer}</p>
+                    </div>
+                )
+            })}
     </div>
   );
 }
