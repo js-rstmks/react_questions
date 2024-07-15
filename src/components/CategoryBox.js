@@ -33,7 +33,7 @@ const CategoryBox = ({ category }) => {
     }
 
     const handleSubcategoryClick = (subcategory_id) => {
-        navigate(`/subcategory/${subcategory_id}`);
+        navigate(`/subcategory/${subcategory_id}`, { state: category.id });
       };
 
     useEffect(() => {

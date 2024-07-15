@@ -24,8 +24,6 @@ const CreatePost = ({isAuth}) => {
     }
 
     useEffect(() => {
-        console.log(isAuth)
-
         if (!isAuth) {
             navigate("/login")
         }

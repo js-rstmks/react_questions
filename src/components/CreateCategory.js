@@ -6,7 +6,6 @@ import { db, auth } from "../firebase"
 import { useNavigate } from "react-router-dom"
 
 const CreateCategory = ({isAuth}) => {
-    // const [postText, setPostText] = useState()
     const [categoryName, setCategoryName] = useState()
 
     const navigate = useNavigate("")
