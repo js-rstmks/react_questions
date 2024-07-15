@@ -44,9 +44,7 @@ function SubcategoryPage() {
         <Link to={{ 
             pathname: "/createquestion",
             }}
-            // state= { subcategory_id }
             state= { ids }
-            // state= { {subcategory_id: subcategory_id, category_id: location.state} }
         >
             Questionを作成する
         </Link>
@@ -54,7 +52,9 @@ function SubcategoryPage() {
                 return (
                     <div key={question.id}>
                         <h2>{question.problem}</h2>
-                        <p>{question.answer}</p>
+                        {question.answer.map((answer, index) => (
+                            <p key={index}>{answer}</p>
+                        ))}
                     </div>
                 )
             })}

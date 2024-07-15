@@ -38,7 +38,7 @@ const CreateQuestion = () => {
     
         const data = await response.json();
         console.log(data)
-        navigate("/")
+        navigate(`/subcategory/${subcategory_id}`, { state: category_id });
     }
   return (
     <>

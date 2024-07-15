@@ -14,12 +14,12 @@ const CategoryBox = ({ category }) => {
     }
 
     const createSubCategory = async () => {
-        const response = await fetch(`http://localhost:8000/subcategories/${category.id}`, {
+        const response = await fetch('http://localhost:8000/subcategories/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name: subCategoryName }),
+            body: JSON.stringify({ name: subCategoryName, category_id: category.id }),
           });
     
           if (!response.ok) {
