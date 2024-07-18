@@ -1,10 +1,14 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import "./Navbar.css"
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faFilePen, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = ({ isAuth }) => {
+interface NavbarProps {
+    isAuth: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ isAuth }) => {
     return (
         <nav>
             <Link to="/">
@@ -15,7 +19,8 @@ const Navbar = ({ isAuth }) => {
                 <Link to="/login">
                     <FontAwesomeIcon icon={faArrowRightToBracket} />
                     ログイン
-                </Link>) : (
+                </Link>
+            ) : (
                 <>
                     <Link to="/logout">
                         <FontAwesomeIcon icon={faArrowRightToBracket} />
@@ -26,7 +31,7 @@ const Navbar = ({ isAuth }) => {
                 </>
             )}
         </nav>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

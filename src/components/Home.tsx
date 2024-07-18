@@ -3,11 +3,18 @@ import { collection, getDocs, deleteDoc, doc } from "firebase/firestore"
 import { db } from "../firebase"
 import  "./Home.css"
 import { useEffect } from "react"
-import { auth } from "../firebase"
+// import { auth } from "../firebase"
 import CategoryBox from "./CategoryBox"
 
-const Home = () => {
-    const [categoryList, setCategoryList] = useState([])
+export interface Category {
+    id: number;
+    name: string;
+    user_id: number;    
+}
+
+
+const Home: React.FC = () => {
+    const [categoryList, setCategoryList] = useState<Category[]>([]);
     useEffect(() => {
         const getCategories = () => {
             fetch('http://localhost:8000/categories')
@@ -23,14 +30,8 @@ const Home = () => {
         getCategories()
     }, [])
 
-    const handleDelete = async (id) => {
-        await deleteDoc(doc(db, "posts", id))
-        window.location.href = "/"
-    }
-
     return (
         <div className="homePage">
-            {/* {postList.map((post) => { */}
             {categoryList.map((category) => {
                 return (
                     <CategoryBox category={category} key={category.id}></CategoryBox>

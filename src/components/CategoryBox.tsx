@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom"
 
+export interface Category {
+    id: number;
+    name: string;
+}
 
-const CategoryBox = ({ category }) => {
-    const [subcategoriesList, setSubcategoriesList] = useState([]);
+export interface Subcategory {
+    id: number;
+    name: string;
+    category_id: number;
+}
+
+interface CategoryBoxProps {
+    category: Category;
+}
+const CategoryBox: React.FC<CategoryBoxProps> = ({ category }) => {
+    const [subcategoriesList, setSubcategoriesList] = useState<Subcategory[]>([]);
     const [showForm, setShowForm] = useState(false);
     const [subCategoryName, setCategoryName] = useState('');
 
-    const navigate = useNavigate("")
+    const navigate = useNavigate();
 
     const handleClick = () => {
         setShowForm(!showForm);
@@ -26,13 +39,13 @@ const CategoryBox = ({ category }) => {
             throw new Error('Failed to create subcategory');
           }
     
-        const data = await response.json();
+        const data: Subcategory = await response.json();
         setSubcategoriesList((prev) => [...prev, data]);
         setCategoryName('');
         
     }
 
-    const handleSubcategoryClick = (subcategory_id) => {
+    const handleSubcategoryClick = (subcategory_id: number) => {
         navigate(`/subcategory/${subcategory_id}`, { state: category.id });
       };
 
@@ -40,7 +53,7 @@ const CategoryBox = ({ category }) => {
         const fetchSubcategories = async () => {
             const response = await fetch(`http://localhost:8000/subcategories/category_id/${category.id}`);
             if (response.ok) {
-                const data = await response.json();
+                const data: Subcategory[] = await response.json();
                 setSubcategoriesList(data);
             }
         };
