@@ -43,7 +43,6 @@ const CreateQuestion: React.FC = () => {
             }
 
             const data = await response.json();
-            (data);
             navigate(`/subcategory/${subcategory_id}`, { state: category_id });
         } catch (error) {
             console.error(error);
