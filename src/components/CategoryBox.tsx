@@ -13,7 +13,7 @@ export interface Subcategory {
 }
 
 interface CategoryBoxProps {
-    category: Category;
+    category: Category
 }
 const CategoryBox: React.FC<CategoryBoxProps> = ({ category }) => {
     const [subcategoriesList, setSubcategoriesList] = useState<Subcategory[]>([]);

@@ -15,20 +15,57 @@ export interface Category {
 
 const Home: React.FC = () => {
     const [categoryList, setCategoryList] = useState<Category[]>([]);
+    const [page, setPage] = useState(1);
+    const [pageCount, setPageCount] = useState();
+    const [limit, setLimit] = useState(7);
     useEffect(() => {
-        const getCategories = () => {
-            fetch('http://localhost:8000/categories')
+        const getPageCount = async () => {
+            fetch(`http://127.0.0.1:8000/categories/page_count`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 }
             })
             .then(data => {
-                setCategoryList(data)
+                setPageCount(data)
+            })
+        }
+        if (pageCount === 0) {
+            
+        }
+        getPageCount()
+    }, [])
+    useEffect(() => {
+        if (page < 1) {
+            setPage(1)
+            return
+        }
+
+        if (page > 10) {
+            setPage(10)
+            return
+        }
+        const skip = (page - 1) * limit;
+        console.log(skip)
+        const getCategories = () => {
+            // fetch('http://localhost:8000/categories')
+            fetch(`http://127.0.0.1:8000/categories?skip=${skip}&limit=${limit}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                // if (data.length === 0) {
+                if (data.length > 0) {
+                    setCategoryList(data)
+                }
+                // return
             })
         }
         getCategories()
-    }, [])
+
+    }, [page, limit, pageCount])
 
     return (
         <div className="homePage">
@@ -37,6 +74,10 @@ const Home: React.FC = () => {
                     <CategoryBox category={category} key={category.id}></CategoryBox>
                 )
             })}
+            <div className="pagination">
+                <button onClick={() => setPage(page - 1)}>Previous</button>
+                <button onClick={() => setPage(page + 1)}>Next</button>
+            </div>
         </div>
     )
 }
