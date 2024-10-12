@@ -16,39 +16,40 @@ export interface Category {
 const Home: React.FC = () => {
     const [categoryList, setCategoryList] = useState<Category[]>([]);
     const [page, setPage] = useState(1);
-    const [pageCount, setPageCount] = useState();
+    const [pageCount, setPageCount] = useState<number | null>(null) 
+    // 初期値をnullに設定。そうすることで、
     const [limit, setLimit] = useState(7);
     useEffect(() => {
+        // ページネーションのためのページ数を取得
         const getPageCount = async () => {
-            fetch(`http://127.0.0.1:8000/categories/page_count`)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-            })
-            .then(data => {
+            const skip = 0;
+            const response = await fetch('http://127.0.0.1:8000/categories/page_count')
+            if (response.ok) {
+                const data = await response.json();
                 setPageCount(data)
-            })
+                console.log(data)
+            }
         }
         if (pageCount === 0) {
-            
         }
         getPageCount()
     }, [])
+
     useEffect(() => {
-        if (page < 1) {
-            setPage(1)
-            return
+        if (pageCount !== null) {
+            if (page < 1) {
+                setPage(1)
+                return
+            }  
+            if (page > pageCount) {
+                setPage(pageCount)
+                return
+            }
         }
 
-        if (page > 10) {
-            setPage(10)
-            return
-        }
         const skip = (page - 1) * limit;
         console.log(skip)
         const getCategories = () => {
-            // fetch('http://localhost:8000/categories')
             fetch(`http://127.0.0.1:8000/categories?skip=${skip}&limit=${limit}`)
             .then(response => {
                 if (response.ok) {
